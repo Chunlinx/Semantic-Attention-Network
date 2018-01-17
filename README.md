@@ -4,7 +4,7 @@
 Pytorch implementation integrating the Tree-LSTM network from "Improved Semantic Representations From Tree-Structured Long Short-Term Memory Networks" (http://arxiv.org/abs/1503.00075, Kai Sheng Tai et al.) and "A Structured Self-Attentive
 Sentence Embedding" (https://arxiv.org/pdf/1703.03130.pdf, Zhouhan Lin et al.).
 
-The model achieves the same test accuracy on the SICK dataset as the Tree-LSTM alone, and additionally provides methods for understanding how the network is learning semantics, as well as information compression via learned attention weights.
+The model achieves about the same test accuracy (86.85%) on the SICK dataset as the Tree-LSTM alone (86.76%), and additionally provides methods for understanding how the network is learning semantics, as well as information compression via learned attention weights. State of the art results achieve 88.5% using transfer learning (https://arxiv.org/pdf/1705.02364.pdf).
 
 A write up of this work can be found at https://journals.mcmaster.ca/mjep/article/view/1627/1230.
 

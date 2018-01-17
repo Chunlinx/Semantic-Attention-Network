@@ -9,8 +9,8 @@ The model achieves the same test accuracy on the SICK dataset as the Tree-LSTM a
 A write up of this work can be found at https://journals.mcmaster.ca/mjep/article/view/1627/1230.
 
 ### Requirements
-- Python 2.7 (testing on 2.7.12)
-- [PyTorch](http://pytorch.org/) (tested on 0.1.12)
+- Python 2.7 (tested on **2.7.12**)
+- [PyTorch](http://pytorch.org/) (tested on **0.1.12**)
 - [tqdm](https://github.com/tqdm/tqdm)
 - Java >= 8 (for Stanford CoreNLP utilities)
 

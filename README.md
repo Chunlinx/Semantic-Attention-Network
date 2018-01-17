@@ -1,11 +1,16 @@
-# Tree-Structured Long Short-Term Memory Networks
-This is a [PyTorch](http://pytorch.org/) implementation of Tree-LSTM as described in the paper [Improved Semantic Representations From Tree-Structured Long Short-Term Memory Networks](http://arxiv.org/abs/1503.00075) by Kai Sheng Tai, Richard Socher, and Christopher Manning. On the semantic similarity task using the SICK dataset, this implementation reaches:
- - Pearson's coefficient: `0.8492` and MSE: `0.2842` with learning rate of `0.010` and fine-tuned embeddings
- - Pearson's coefficient: `0.8674` and MSE: `0.2536` with learning rate of `0.025` and frozen embeddings
+
+
+# Semantic Attention Network for Intuitive Information Retrieval 
+Pytorch implementation integrating the Tree-LSTM network from "Improved Semantic Representations From Tree-Structured Long Short-Term Memory Networks" (http://arxiv.org/abs/1503.00075, Kai Sheng Tai et al.) and "A Structured Self-Attentive
+Sentence Embedding" (https://arxiv.org/pdf/1703.03130.pdf, Zhouhan Lin et al.).
+
+The model achieves the same test accuracy on the SICK dataset as the Tree-LSTM alone, and additionally provides methods for understanding how the network is learning semantics, as well as information compression via learned attention weights.
+
+A write up of this work can be found at https://journals.mcmaster.ca/mjep/article/view/1627/1230.
 
 ### Requirements
-- Python (tested on **2.7.13** and **3.6.3**)
-- [PyTorch](http://pytorch.org/) (tested on **0.1.12** and **0.2.0**)
+- Python 2.7 (testing on 2.7.12)
+- [PyTorch](http://pytorch.org/) (tested on 0.1.12)
 - [tqdm](https://github.com/tqdm/tqdm)
 - Java >= 8 (for Stanford CoreNLP utilities)
 
@@ -20,27 +25,9 @@ This is a [PyTorch](http://pytorch.org/) implementation of Tree-LSTM as describe
      - The first run takes a few minutes to read and store the GLOVE embeddings for the words in the SICK vocabulary to a cache for future runs. In later runs, only the cache is read in during later runs.
      - Logs and model checkpoints are saved to the `checkpoints/` directory with the name specified by the command line argument `--expname`.
 
-### Results
- - Using hyperparameters `--lr 0.010 --wd 0.0001 --optim adagrad --batchsize 25` gives Pearson's coefficient of `0.8492` and MSE of `0.2842`
- - Using hyperparameters `--lr 0.025 --wd 0.0001 --optim adagrad --batchsize 25 --freeze_embed` gives Pearson's coefficient of `0.8674` and MSE of `0.2536`
- - In the original paper, the numbers reported include Pearson's coefficient of `0.8676` and MSE of `0.2532`
-
-Minor differences include the way the gradients are accumulated (normalized by batchsize or not) and embeddings are updated (frozen or fine-tuned).
-
-### Notes
- - (**Nov 28, 2017**) Added **frozen embeddings**, closed gap to paper.
- - (**Nov 08, 2017**) Refactored model to get **1.5x - 2x speedup**.
- - (**Oct 23, 2017**) Now works with **PyTorch 0.2.0**.
- - (**May 04, 2017**) Added support for **sparse tensors**. Using the `--sparse` argument will enable sparse gradient updates for `nn.Embedding`, potentially reducing memory usage.
-     - There are a couple of caveats, however, viz. weight decay will not work in conjunction with sparsity, and results from the original paper might not be reproduced using sparse embeddings.
 
 ### Acknowledgements
-Shout-out to [Kai Sheng Tai](https://github.com/kaishengtai/) for the [original LuaTorch implementation](https://github.com/stanfordnlp/treelstm), and to the [Pytorch team](https://github.com/pytorch/pytorch#the-team) for the fun library.
-
-### Contact
-[Riddhiman Dasgupta](https://researchweb.iiit.ac.in/~riddhiman.dasgupta/)
-
-*This is my first PyTorch based implementation, and might contain bugs. Please let me know if you find any!*
+Thanks to Riddhiman Dasgupta for his open source Pytorch implementation of the dependency tree-LSTM and Haoyue Shi for his open source Pytorch implementation of the self-structured attention mechansism.
 
 ### License
 MIT

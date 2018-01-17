@@ -26,5 +26,8 @@ A write up of this work can be found at https://journals.mcmaster.ca/mjep/articl
 ### Acknowledgements
 Thanks to Riddhiman Dasgupta for his open source Pytorch implementation of the dependency tree-LSTM and Haoyue Shi for his open source Pytorch implementation of the self-structured attention mechansism.
 
+https://github.com/ExplorerFreda/Structured-Self-Attentive-Sentence-Embedding
+https://github.com/dasguptar/treelstm.pytorch
+
 ### License
 MIT

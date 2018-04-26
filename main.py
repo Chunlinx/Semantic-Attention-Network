@@ -133,7 +133,7 @@ def main():
     best = -float('inf')
 
     def adjust_learning_rate(optimizer, epoch):
-        """Sets the learning rate to the initial LR decayed by 5 every 3 epochs"""
+        # Decay learning rate after 15 epochs
         lr = args.lr * (0.01 ** (epoch // 15))
         for param_group in optimizer.param_groups:
             param_group['lr'] = lr
